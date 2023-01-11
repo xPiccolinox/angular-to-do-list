@@ -14,7 +14,7 @@ interface Task {
       <div>Tasks:</div>
       <ol>
         <li *ngFor="let task of tasks">
-          {{ task.title}}
+          {{ task.title }}
         </li>
       </ol>
       <form 
@@ -51,9 +51,8 @@ export class AppComponent {
     title: "Buy some bread",
   }]
 
-  handleSubmit(newTask: string) {
-    
+  handleSubmit(newTask: any) {
+    console.log(newTask.taskDesc)
+    this.tasks.push({id: this.tasks[this.tasks.length - 1].id + 1, title: newTask.taskDesc})
   }
-
-
 }
