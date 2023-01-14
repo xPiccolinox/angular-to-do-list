@@ -17,7 +17,8 @@ interface Task {
       <ol>
         <li *ngFor="let task of tasks" class="task" [class.taskDone]="task.done">
           {{ task.title }}
-          <button (click)="changeDone(task)"> X </button>
+          <button (click)="changeDone(task)"> Done </button>
+          <button (click)="handleRemove(task)"> Remove </button>
         </li>
       </ol>
       <form 
@@ -65,5 +66,10 @@ export class AppComponent {
   }
   changeDone(event: Task) {
     event.done = !event.done
+  }
+  handleRemove(event: Task) {
+    this.tasks = this.tasks.filter((task: Task) => {
+      return event.id !== task.id
+    })
   }
 }
