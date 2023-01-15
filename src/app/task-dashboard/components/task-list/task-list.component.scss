@@ -1,0 +1,10 @@
+.task {
+  font-style: italic;
+  &.task::marker {
+    color: #000;
+  }
+  &.taskDone {
+    color: darkGrey;
+    text-decoration: line-through;
+  }
+}
