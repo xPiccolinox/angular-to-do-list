@@ -4,15 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
+
 import { TaskDashboardComponent } from './containers/task-dashboard.component';
 import { TaskFormComponent } from './components/task-form.component.ts/task-form.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskDashboardService } from './task-dashboard.service';
 
 @NgModule({
   declarations: [
     TaskDashboardComponent,
     TaskFormComponent,
-    TaskListComponent
+    TaskListComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,9 @@ import { TaskListComponent } from './components/task-list/task-list.component';
   exports: [
     TaskDashboardComponent
   ],
-  providers: []
+  providers: [
+    TaskDashboardService
+  ]
 })
 
 export class TaskDashboardModule {}

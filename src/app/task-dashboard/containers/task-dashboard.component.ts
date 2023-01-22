@@ -1,5 +1,5 @@
 import { Component, OnInit} from "@angular/core";
-
+import { TaskDashboardService } from "../task-dashboard.service";
 import { Task } from "../models/task.interface";
 
 @Component({
@@ -11,32 +11,39 @@ import { Task } from "../models/task.interface";
       <div>Tasks:</div>
       <ol>
         <task-list
-        *ngFor="let task of tasks"
-          [task]="task">
+          *ngFor="let task of tasks"
+          [task]="task"
+          (done)="handleChangeDone($event)"
+          (remove)="handleRemove($event)">
         </task-list>
       </ol>
-      <task-form></task-form>
+      <task-form (addNew)="handleAddNew($event)"></task-form>
     </div>
   `
 })
 
 export class TaskDashboardComponent implements OnInit {
   tasks: Task[] = [];
-  constructor() {}
+  constructor(private taskService: TaskDashboardService) {}
   ngOnInit() {
-    this.tasks = [{
-      id: 1,
-      title: "Wash the dishes",
-      done: false
-    }, {
-      id: 2,
-      title: "Do the laundry",
-      done: true
-    }, {
-      id: 3,
-      title: "Buy some bread",
-      done: false
-    }]
+    this.taskService
+      .getTasks()
+      .subscribe((data: Task[]) => {
+    //     console.log('Data', data)
+        this.tasks = data
+      })
+  }
+  handleChangeDone(event: any) {
+    event.done = !event.done
+  }
+  handleRemove(event: any) {
+    this.tasks = this.tasks.filter((task: Task) => {
+      return event.id !== task.id
+    })
+  }
+  handleAddNew(event: any) {
+    if (this.tasks.length > 0) this.tasks.push({id: this.tasks[this.tasks.length - 1].id + 1, title: event.taskDesc, done: false})
+    else this.tasks.push({id: 1, title: event.taskDesc, done: false})
   }
 }
 

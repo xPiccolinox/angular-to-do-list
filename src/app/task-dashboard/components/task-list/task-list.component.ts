@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 import { Task } from "../../models/task.interface";
 
@@ -9,7 +9,7 @@ import { Task } from "../../models/task.interface";
     <li class="task" [class.taskDone]="task.done">
       {{ task.title }}
       <button (click)="changeDone(task)"> Done </button>
-      <button (click)="handleRemove(task)"> Remove </button>
+      <button (click)="onRemove(task)"> Remove </button>
     </li>
   `
 })
@@ -17,13 +17,15 @@ import { Task } from "../../models/task.interface";
 export class TaskListComponent {
   @Input()
   task!: Task
+  @Output()
+  remove: EventEmitter<any> = new EventEmitter()
+  @Output()
+  done: EventEmitter<any> = new EventEmitter()
 
   changeDone(event: Task) {
-    // event.done = !event.done
+    this.done.emit(this.task)
   }
-  handleRemove(event: Task) {
-    // this.tasks = this.tasks.filter((task: Task) => {
-    //   return event.id !== task.id
-    // })
+  onRemove(event: Task) {
+    this.remove.emit(this.task)
   }
 }

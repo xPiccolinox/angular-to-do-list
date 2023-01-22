@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 
 import { Task } from "../../models/task.interface";
 
@@ -7,7 +7,7 @@ import { Task } from "../../models/task.interface";
   styleUrls: ['task-form.component.scss'],
   template: `
     <form 
-      (ngSubmit)="handleSubmit(form.value)"
+      (ngSubmit)="handleSubmit(form.value, form.valid)"
       #form="ngForm"
       novalidate>
       <input 
@@ -28,5 +28,12 @@ import { Task } from "../../models/task.interface";
 })
 
 export class TaskFormComponent {
-  handleSubmit(newTask: any) {}
+  @Output()
+  addNew: EventEmitter<Task> = new EventEmitter<Task>()
+
+  handleSubmit(newTask: Task, isValid: any) {
+    if (isValid) {
+      this.addNew.emit(newTask)
+    }
+  }
 }
