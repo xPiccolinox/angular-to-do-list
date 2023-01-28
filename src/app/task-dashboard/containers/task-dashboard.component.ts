@@ -26,24 +26,22 @@ export class TaskDashboardComponent implements OnInit {
   tasks: Task[] = [];
   constructor(private taskService: TaskDashboardService) {}
   ngOnInit() {
-    this.taskService
-      .getTasks()
-      .subscribe((data: Task[]) => {
-    //     console.log('Data', data)
-        this.tasks = data
-      })
+    this.tasks = this.taskService.getLocalStorage()
   }
   handleChangeDone(event: any) {
     event.done = !event.done
+    this.taskService.updateLocalStorage(this.tasks)
   }
   handleRemove(event: any) {
     this.tasks = this.tasks.filter((task: Task) => {
       return event.id !== task.id
     })
+    this.taskService.updateLocalStorage(this.tasks)
   }
   handleAddNew(event: any) {
     if (this.tasks.length > 0) this.tasks.push({id: this.tasks[this.tasks.length - 1].id + 1, title: event.taskDesc, done: false})
     else this.tasks.push({id: 1, title: event.taskDesc, done: false})
+    this.taskService.updateLocalStorage(this.tasks)
   }
 }
 
