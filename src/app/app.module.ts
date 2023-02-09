@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskDashboardModule } from './task-dashboard/task-dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   declarations: [
@@ -14,7 +16,10 @@ import { TaskDashboardModule } from './task-dashboard/task-dashboard.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TaskDashboardModule
+    TaskDashboardModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

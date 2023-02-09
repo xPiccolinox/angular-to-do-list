@@ -7,14 +7,14 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 
 import { TaskDashboardComponent } from './containers/task-dashboard.component';
 import { TaskFormComponent } from './components/task-form.component.ts/task-form.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskTileComponent } from './components/task-tile/task-tile.component';
 import { TaskDashboardService } from './task-dashboard.service';
 
 @NgModule({
   declarations: [
     TaskDashboardComponent,
     TaskFormComponent,
-    TaskListComponent,
+    TaskTileComponent,
   ],
   imports: [
     BrowserModule,

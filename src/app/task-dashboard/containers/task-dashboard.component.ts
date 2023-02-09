@@ -6,18 +6,27 @@ import { Task } from "../models/task.interface";
   selector: 'task-dashboard',
   styleUrls: ['task-dashboard.component.scss'],
   template: `
-    <div>
+    <div class="taskContainer">
       <header>To do list</header>
-      <div>Tasks:</div>
-      <ol>
-        <task-list
-          *ngFor="let task of tasks"
+      <!-- <task-list
+          *ngFor="let task of tasks; let i = index;"
+          class="taskList"
           [task]="task"
+          [i]="i"
           (done)="handleChangeDone($event)"
           (remove)="handleRemove($event)">
-        </task-list>
-      </ol>
-      <task-form (addNew)="handleAddNew($event)"></task-form>
+      </task-list> -->
+      <div class="taskList">
+        <task-tile
+          class="taskTile"
+          *ngFor="let task of tasks; let i = index;"
+          [task]="task"
+          [i]="i"
+          (done)="handleChangeDone($event)"
+          (remove)="handleRemove($event)">
+        </task-tile>
+      </div>
+      <task-form class="taskForm" (addNew)="handleAddNew($event)"></task-form>
     </div>
   `
 })

@@ -7,23 +7,27 @@ import { Task } from "../../models/task.interface";
   styleUrls: ['task-form.component.scss'],
   template: `
     <form 
-      (ngSubmit)="handleSubmit(form.value, form.valid)"
+      (ngSubmit)="handleSubmit(form.value, form.valid); form.reset()"
       #form="ngForm"
       novalidate>
       <input 
         type="text"
+        class="formInput"
         name="taskDesc"
         #taskDesc="ngModel"
         ngModel
         maxlength="30"
         minlength="5"
         placeholder="Create new task"
+        autocomplete="off"
+        spellcheck="false"
         required />
-      <button type="submit" [disabled]="form.invalid">Add</button>
-      <div *ngIf="(taskDesc.errors?.['minlength'] || taskDesc.errors?.['required']) && taskDesc.dirty">
+      <button class="formSubmit" type="submit" [disabled]="form.invalid">Add</button>
+      <div class="formInputError" *ngIf="(taskDesc.errors?.['minlength'] || taskDesc.errors?.['required']) && taskDesc.dirty">
         At least 5 characters required!
       </div>
     </form>
+    <!-- <form>TaskForm Test</form> -->
   `
 })
 
