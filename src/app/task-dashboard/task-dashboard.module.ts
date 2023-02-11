@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
-import { TaskDashboardComponent } from './containers/task-dashboard.component';
+import { TaskDashboardComponent } from './containers/task-dashboard/task-dashboard.component';
 import { TaskFormComponent } from './components/task-form.component.ts/task-form.component';
 import { TaskTileComponent } from './components/task-tile/task-tile.component';
 import { TaskDashboardService } from './task-dashboard.service';
