@@ -16,7 +16,6 @@ import { Task } from "../../models/task.interface";
         <button class="taskRemoveButton" (click)="onRemove(task)"> &#10006; </button>
       </div>
     </div>
-    <!-- <div>TaskTile Test</div> -->
   `
 })
 

@@ -27,7 +27,6 @@ import { Task } from "../../models/task.interface";
         At least 5 characters required!
       </div>
     </form>
-    <!-- <form>TaskForm Test</form> -->
   `
 })
 

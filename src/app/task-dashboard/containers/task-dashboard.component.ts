@@ -8,14 +8,6 @@ import { Task } from "../models/task.interface";
   template: `
     <div class="taskContainer">
       <header>To do list</header>
-      <!-- <task-list
-          *ngFor="let task of tasks; let i = index;"
-          class="taskList"
-          [task]="task"
-          [i]="i"
-          (done)="handleChangeDone($event)"
-          (remove)="handleRemove($event)">
-      </task-list> -->
       <div class="taskList">
         <task-tile
           class="taskTile"

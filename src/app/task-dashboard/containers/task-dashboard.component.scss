@@ -44,6 +44,7 @@
   .taskTile {
     width: 100%;
     height: 2.4em;
+    flex-shrink: 0;
   }
 }
 .taskForm {
