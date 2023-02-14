@@ -1,3 +1,5 @@
+@use '../../../../colors';
+
 form {
   font-size: 24px;
   width: 18em;
@@ -8,12 +10,11 @@ form {
     font-size: 1em;
     height: 50%;
     padding: 0.3em;
-    border-bottom: 2px solid #646464;
+    border-bottom: 2px solid colors.$border;
   }
   .formInput {
-    background-color: #363636;
+    background-color: colors.$bg;
     position: relative;
-    color: #fff;
     z-index: 2;
     &::placeholder {
       color: #808080;
