@@ -3,7 +3,6 @@
 .taskContainer {
   margin: 0;
   padding: 0;
-  background-color: colors.$bg;
   width: 60vw;
   height: 98vh;
   display: flex;
@@ -28,8 +27,6 @@
     width: 80%;
     height: 100%;
     min-height: 20em;
-    border-top: 2px solid colors.$border;
-    border-bottom: 2px solid colors.$border;
     overflow-y: scroll;
     .taskTile {
       flex-shrink: 0;

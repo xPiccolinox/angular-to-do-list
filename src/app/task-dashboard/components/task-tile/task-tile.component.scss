@@ -1,35 +1,27 @@
 @use '../../../../colors';
 
 .taskTileComponent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 24px;
-    font-style: italic;
-    &:hover .taskButtons * {
-        width: 2.2em;
-    }
-    &:nth-child(even) {
-      background-color: #404040;
-    }
-    &:hover {
-      background-color: #525252;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  font-style: italic;
+  &:hover .taskButtons * {
+      width: 2.2em;
+  }
   .taskText {
     display: flex;
     .taskIndex {
       display: block;
-      color: #fff;
       margin-right: 0.5em;
       cursor: default;
     }
     .taskTitle {
       &.taskDone {
-        color: darkGrey;
         text-decoration: line-through;
       }
     }
@@ -46,32 +38,8 @@
       width: 0.6em;
       overflow: hidden;
     }
-    .taskDoneButton {
-      color: #494;
-      background-color: #494;
-      &:hover {
-        background-color: #4b4;
-      }
-      &:active {
-        background-color: #484;
-      }
-    }
-    .taskRemoveButton {
-      color: #d33;
-      background-color: #d33;
-      &:hover {
-        background-color: #e55;
-      }
-      &:active {
-        background-color: #c11;
-      }
-    }
     *:hover {
       width: 3em;
     }
   }
-  &:hover .taskButtons * {
-    color: #000;
-  }
 }
-
