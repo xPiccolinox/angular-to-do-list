@@ -1,6 +1,6 @@
 import { Component, OnInit} from "@angular/core";
-import { TaskDashboardService } from "../task-dashboard.service";
-import { Task } from "../models/task.interface";
+import { TaskDashboardService } from "../../task-dashboard.service";
+import { Task } from "../../models/task.interface";
 
 @Component({
   selector: 'task-dashboard',
