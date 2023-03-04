@@ -9,21 +9,28 @@ import { TaskDashboardComponent } from './containers/task-dashboard/task-dashboa
 import { TaskFormComponent } from './components/task-form.component.ts/task-form.component';
 import { TaskTileComponent } from './components/task-tile/task-tile.component';
 import { TaskDashboardService } from './task-dashboard.service';
+import { UserLoginComponent } from './containers/user-login/user-login.component';
+import { MaterialModule } from '../material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     TaskDashboardComponent,
     TaskFormComponent,
     TaskTileComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   exports: [
-    TaskDashboardComponent
+    TaskDashboardComponent,
+    UserLoginComponent
   ],
   providers: [
     TaskDashboardService

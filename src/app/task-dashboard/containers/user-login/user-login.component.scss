@@ -1,0 +1,26 @@
+.userLoginComponent {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 42vh;
+  height: 56vh;
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+  }
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 0;
+    mat-form-field {
+      width: 70%;
+    }
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12%;
+  }
+}

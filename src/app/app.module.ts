@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskDashboardModule } from './task-dashboard/task-dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     HttpClientModule,
     TaskDashboardModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule
-    
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

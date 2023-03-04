@@ -1,5 +1,7 @@
 // general
-$body_bg: #242424;
+$color: #000; 
+// $body_bg: #242424;
+$body_bg: #eee;
 $primary: #363636;
 $primaryHover: #464646;
 $primaryActive: #323232;
@@ -58,9 +60,9 @@ $border: #646464;
 
 // task-form
 form {
-  * {
-    border-bottom: 2px solid $border;
-  }
+  // * {
+  //   border-bottom: 2px solid $border;
+  // }
   .formInput {
     background-color: $primary;
     &::placeholder {
