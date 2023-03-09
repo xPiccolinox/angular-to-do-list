@@ -1,26 +1,33 @@
 .userLoginComponent {
   display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 42vh;
-  height: 56vh;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+  height: 540px;
+  img {
+    width: 38%;
+    margin-top: 16%;
+  }
   mat-card-header {
     display: flex;
     justify-content: center;
   }
-  mat-card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 32px 0;
-    mat-form-field {
-      width: 70%;
+  form{
+    width: 100%;
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+      mat-form-field {
+        width: 70%;
+      }
     }
-  }
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-    gap: 12%;
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12%;
+    }
   }
 }

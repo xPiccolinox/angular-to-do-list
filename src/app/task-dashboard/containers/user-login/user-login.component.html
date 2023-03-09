@@ -1,37 +1,61 @@
-<!-- <div class="UserLoginComponent">
-  <div class="header">Sign in</div>
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>Fill form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </form>
-</div> -->
-
 <mat-card class="userLoginComponent">
+  <!-- Image -->
+  <img mat-card-image src="assets/images/logo.png" alt="To Do List logo image">
+  <!-- Header title and subtitle -->
   <mat-card-header>
     <mat-card-title align="center">Sign in</mat-card-title>
     <mat-card-subtitle align="center">and check your tasks</mat-card-subtitle>
   </mat-card-header>
-  <form>
+  <!-- Form -->
+  <form
+  #userLoginForm="ngForm"
+  (ngSubmit)="handleSubmit(userLoginForm, $event.submitter.name)"
+  novalidate>
+    <!-- Inputs -->
     <mat-card-content align="center">
+      <!-- Username -->
       <mat-form-field hideRequiredMarker="true">
         <mat-label>Username</mat-label>
-        <input matInput required>
+        <input
+          matInput
+          ngModel
+          name="username"
+          required>
       </mat-form-field>
+      <!-- Password -->
       <mat-form-field hideRequiredMarker="true">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input
+          matInput
+          ngModel
+          name="password"
+          required
+          [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
     </mat-card-content>
+    <!-- Buttons -->
     <mat-card-actions>
-      <button mat-button color="primary">Create new profile</button>
-      <button mat-raised-button color="primary">Sign in</button>
+      <!-- Create new profile -->
+      <button
+        mat-button
+        color="primary"
+        type="submit"
+        name="createNewProfile"
+        autocomplete="off"
+        spellcheck="false">
+        Create new profile</button>
+      <!-- Sign in -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        name="signIn"
+        autocomplete="off"
+        spellcheck="false">
+        Sign in</button>
     </mat-card-actions>
   </form>
 </mat-card>
