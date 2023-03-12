@@ -48,14 +48,14 @@ export class UserLoginComponent {
       }
     }
     this.users.push(values)
-    userLoginForm.reset()
+    userLoginForm.resetForm()
     this.handleOpenSnackBar('Successfully created new profile.')
   }
   handleSignIn(userLoginForm: NgForm, values: User) {
     for (let user of this.users) {
       if (user.username === values.username) {
         if (user.password === values.password) {
-          userLoginForm.reset()
+          userLoginForm.resetForm()
           return this.handleOpenSnackBar('Successfully logged in. (Not really tho)')
         }
       }
