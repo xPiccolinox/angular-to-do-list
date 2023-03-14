@@ -5,10 +5,10 @@ import { Task } from "./models/task.interface";
 @Injectable()
 export class TaskDashboardService {
   constructor() {}
-  getLocalStorage() {
+  getTasks() {
     return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks') || '{}') : []
   }
-  updateLocalStorage(tasksObject: Task[]) {
+  updateTasks(tasksObject: Task[]) {
     localStorage.setItem('tasks', JSON.stringify(tasksObject))
   }
 }
