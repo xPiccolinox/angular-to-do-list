@@ -11,8 +11,8 @@ interface Task {
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <!-- <task-dashboard></task-dashboard> -->
-    <user-login></user-login>
+    <task-dashboard></task-dashboard>
+    <!-- <user-login></user-login> -->
   `
 })
 export class AppComponent {}

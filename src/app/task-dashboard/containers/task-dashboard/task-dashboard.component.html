@@ -1,0 +1,17 @@
+<div class="taskContainer">
+    <div class="sidebar mat-elevation-z8">
+        <img src="./assets/images/logo.png"/>
+        <button mat-raised-button color="primary">Log out</button>
+    </div>
+    <div class="taskList">
+        <task-tile
+            class="taskTile"
+            *ngFor="let task of tasks; let i = index;"
+            [task]="task"
+            [i]="i"
+            (done)="handleChangeDone($event)"
+            (remove)="handleRemove($event)">
+        </task-tile>
+        <task-form class="taskForm" (addNew)="handleAddNew($event)"></task-form>
+    </div>
+</div>

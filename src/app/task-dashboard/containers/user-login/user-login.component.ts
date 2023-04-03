@@ -14,24 +14,10 @@ export class UserLoginComponent implements OnInit {
   constructor(private snackBar: MatSnackBar, private taskService: TaskDashboardService) {}
 
   hide = true;
-  users: User[] = [
-    // {
-    //     "username": "123",
-    //     "password": "abc"
-    // },
-    // {
-    //     "username": "456",
-    //     "password": "dfe"
-    // },
-    // {
-    //     "username": "789",
-    //     "password": "ghi"
-    // }
-  ]
+  users: User[] = []
 
   ngOnInit(): void {
     this.users = this.taskService.getUsers()
-    console.log(this.users)
   }
 
   handleOpenSnackBar(message: string) {

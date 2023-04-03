@@ -1,0 +1,25 @@
+<form 
+  (ngSubmit)="handleSubmit(form.value, form.valid); form.reset()"
+  #form="ngForm"
+  novalidate>
+  <button
+    mat-fab
+    color="primary"
+    class="formSubmit mat-elevation-z2"
+    type="submit"
+    [disabled]="form.invalid">
+    <mat-icon>add</mat-icon>
+  </button>
+  <input 
+  type="text"
+  class="formInput mat-elevation-z2"
+  name="taskDesc"
+  #taskDesc="ngModel"
+  ngModel
+  maxlength="999"
+  minlength="1"
+  placeholder="Create new task"
+  autocomplete="off"
+  spellcheck="false"
+  required />
+</form>

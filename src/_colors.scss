@@ -1,85 +1,85 @@
-// general
-$color: #000; 
-// $body_bg: #242424;
+// // general
+// $color: #000; 
+// // $body_bg: #242424;
 $body_bg: #eee;
-$primary: #363636;
-$primaryHover: #464646;
-$primaryActive: #323232;
-$border: #646464;
+// $primary: #363636;
+// $primaryHover: #464646;
+// $primaryActive: #323232;
+// $border: #646464;
 
-// task-dashboard
-.taskContainer {
-  background-color: $primary;
-  .taskList {
-    border-top: 2px solid $border;
-    border-bottom: 2px solid $border;
-  }
-}
+// // task-dashboard
+// .taskContainer {
+//   background-color: $primary;
+//   .taskList {
+//     border-top: 2px solid $border;
+//     border-bottom: 2px solid $border;
+//   }
+// }
 
-// task-tile
-.taskTileComponent {
-  &:hover {
-    background-color: $primaryHover;
-  }
-  .taskText {
-    .taskIndex {
-      color: #fff;
-    }
-    .taskTitle {
-      &.taskDone {
-        color: #999;
-      }
-    }
-  }
-  .taskButtons {
-    .taskDoneButton {
-      color: #494;
-      background-color: #494;
-      &:hover {
-        background-color: #4b4;
-      }
-      &:active {
-        background-color: #484;
-      }
-    }
-    .taskRemoveButton {
-      color: #d33;
-      background-color: #d33;
-      &:hover {
-        background-color: #e55;
-      }
-      &:active {
-        background-color: #c11;
-      }
-    }
-  }
-  &:hover .taskButtons * {
-    color: #000;
-  }
-}
+// // task-tile
+// .taskTileComponent {
+//   &:hover {
+//     background-color: $primaryHover;
+//   }
+//   .taskText {
+//     .taskIndex {
+//       color: #fff;
+//     }
+//     .taskTitle {
+//       &.taskDone {
+//         color: #999;
+//       }
+//     }
+//   }
+//   .taskButtons {
+//     .taskDoneButton {
+//       color: #494;
+//       background-color: #494;
+//       &:hover {
+//         background-color: #4b4;
+//       }
+//       &:active {
+//         background-color: #484;
+//       }
+//     }
+//     .taskRemoveButton {
+//       color: #d33;
+//       background-color: #d33;
+//       &:hover {
+//         background-color: #e55;
+//       }
+//       &:active {
+//         background-color: #c11;
+//       }
+//     }
+//   }
+//   &:hover .taskButtons * {
+//     color: #000;
+//   }
+// }
 
-// task-form
-form {
-  // * {
-  //   border-bottom: 2px solid $border;
-  // }
-  .formInput {
-    background-color: $primary;
-    &::placeholder {
-      color: #808080;
-    }
-    &:hover {
-      background-color: $primaryHover;
-    }
-  }
-  .formSubmit {
-    background-color: $primary;
-    color: #fff;
-    &:hover {
-      background-color: $primaryHover;
-    }
-    &:active {
-      background-color: $primaryActive;
-    }
-  }
-}
+// // task-form
+// form {
+//   // * {
+//   //   border-bottom: 2px solid $border;
+//   // }
+//   .formInput {
+//     background-color: $primary;
+//     &::placeholder {
+//       color: #808080;
+//     }
+//     &:hover {
+//       background-color: $primaryHover;
+//     }
+//   }
+//   .formSubmit {
+//     background-color: $primary;
+//     color: #fff;
+//     &:hover {
+//       background-color: $primaryHover;
+//     }
+//     &:active {
+//       background-color: $primaryActive;
+//     }
+//   }
+// }

@@ -1,45 +1,51 @@
-@use '../../../../colors';
-
 .taskContainer {
-  margin: 0;
-  padding: 0;
-  width: 60vw;
-  height: 98vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  header {
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  .sidebar {
+    background-color: #fff;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-shrink: 0;
-    width: 100%;
-    height: 1.6em;
-    font-size: 64px;
+    width: 24vw;
+    min-width: 320px;
+    max-width: 480px;
+    height: 100%;
+    padding: 30px 0;
+    box-sizing: border-box;
+    img {
+      width: 180px;
+    }
+    button {
+      width: 50%;
+      height: 48px;
+      justify-self: flex-end;
+      margin-top: auto;
+    }
   }
   .taskList {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    flex-shrink: 1;
-    width: 80%;
-    height: 100%;
-    min-height: 20em;
-    overflow-y: scroll;
+    flex: 1;
+    padding: 64px 6vw 48px 6vw;
+    overflow: auto;
     .taskTile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-shrink: 0;
-      width: 100%;
-      height: 2.4em;
+      width: 70%;
+      min-height: 52px;
+      margin-bottom: 18px;
     }
-  }
-  .taskForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 100%;
-    height: 10em;
+    .taskForm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+      height: 52px;
+    }
   }
 }
