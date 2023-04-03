@@ -1,0 +1,17 @@
+<div class="taskTileComponent mat-elevation-z2" [class.taskDone]="task.done">
+  <mat-checkbox
+    color="primary" 
+    [checked]="task.done" 
+    (change)="changeDone(task)"
+    class="taskDoneCheckbox"
+  ></mat-checkbox>
+  <div class="taskTitle">
+    {{ task.title }}
+  </div>
+  <button
+    mat-icon-button
+    class="taskRemoveButton"
+    (click)="onRemove(task)">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
+</div>

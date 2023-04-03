@@ -2,25 +2,30 @@ import { Component, OnInit} from "@angular/core";
 import { TaskDashboardService } from "../../task-dashboard.service";
 import { Task } from "../../models/task.interface";
 
+// @Component({
+//   selector: 'task-dashboard',
+//   styleUrls: ['task-dashboard.component.scss'],
+//   template: `
+//     <div class="taskContainer">
+//       <header>To do list</header>
+//       <div class="taskList">
+//         <task-tile
+//           class="taskTile"
+//           *ngFor="let task of tasks; let i = index;"
+//           [task]="task"
+//           [i]="i"
+//           (done)="handleChangeDone($event)"
+//           (remove)="handleRemove($event)">
+//         </task-tile>
+//       </div>
+//       <task-form class="taskForm" (addNew)="handleAddNew($event)"></task-form>
+//     </div>
+//   `
+// })
 @Component({
   selector: 'task-dashboard',
-  styleUrls: ['task-dashboard.component.scss'],
-  template: `
-    <div class="taskContainer">
-      <header>To do list</header>
-      <div class="taskList">
-        <task-tile
-          class="taskTile"
-          *ngFor="let task of tasks; let i = index;"
-          [task]="task"
-          [i]="i"
-          (done)="handleChangeDone($event)"
-          (remove)="handleRemove($event)">
-        </task-tile>
-      </div>
-      <task-form class="taskForm" (addNew)="handleAddNew($event)"></task-form>
-    </div>
-  `
+  templateUrl: 'task-dashboard.component.html',
+  styleUrls: ['task-dashboard.component.scss']
 })
 
 export class TaskDashboardComponent implements OnInit {

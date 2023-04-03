@@ -4,19 +4,8 @@ import { Task } from "../../models/task.interface";
 
 @Component({
   selector: 'task-tile',
-  styleUrls: ['task-tile.component.scss'],
-  template: `
-    <div class="taskTileComponent">
-      <div class="taskText">
-        <div class="taskIndex">{{ i + 1 }}.</div>
-        <div class="taskTitle" [class.taskDone]="task.done">{{ task.title }}</div>
-      </div>
-      <div class="taskButtons">
-        <button class="taskDoneButton" (click)="changeDone(task)"> &#10004; </button>
-        <button class="taskRemoveButton" (click)="onRemove(task)"> &#10006; </button>
-      </div>
-    </div>
-  `
+  templateUrl: 'task-tile.component.html',
+  styleUrls: ['task-tile.component.scss']
 })
 
 export class TaskTileComponent {
@@ -31,6 +20,7 @@ export class TaskTileComponent {
 
   changeDone(event: Task) {
     this.done.emit(this.task)
+    console.log('bruh')
   }
   onRemove(event: Task) {
     this.remove.emit(this.task)
