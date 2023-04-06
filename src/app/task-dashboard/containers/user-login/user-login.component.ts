@@ -46,14 +46,21 @@ export class UserLoginComponent implements OnInit {
     this.handleOpenSnackBar('Successfully created new profile.')
   }
   handleSignIn(userLoginForm: NgForm, values: User) {
-    for (let user of this.users) {
-      if (user.username === values.username) {
-        if (user.password === values.password) {
-          userLoginForm.resetForm()
-          return this.handleOpenSnackBar('Successfully logged in. (Not really tho)')
+    if (this.users.length > 0) {
+      console.log(this.users)
+      for (let user of this.users) {
+        if (user.username === values.username) {
+          if (user.password === values.password) {
+            userLoginForm.resetForm()
+            return this.handleOpenSnackBar('Successfully logged in. (Not really tho)')
+          }
         }
+        this.handleOpenSnackBar('Incorrect username or/and password!')
       }
+    }
+    else {
       this.handleOpenSnackBar('Incorrect username or/and password!')
+      console.log('Bruh')
     }
   }
 }
