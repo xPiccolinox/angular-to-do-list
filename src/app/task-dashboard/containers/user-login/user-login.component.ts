@@ -11,7 +11,10 @@ import { User } from '../../models/user.interface';
 })
 
 export class UserLoginComponent implements OnInit {
-  constructor(private snackBar: MatSnackBar, private taskService: TaskDashboardService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private taskService: TaskDashboardService
+  ) {}
 
   hide = true;
   users: User[] = []
@@ -47,20 +50,20 @@ export class UserLoginComponent implements OnInit {
   }
   handleSignIn(userLoginForm: NgForm, values: User) {
     if (this.users.length > 0) {
-      console.log(this.users)
+      let throwError = true
       for (let user of this.users) {
         if (user.username === values.username) {
           if (user.password === values.password) {
+            throwError = false
             userLoginForm.resetForm()
-            return this.handleOpenSnackBar('Successfully logged in. (Not really tho)')
+            this.taskService.logInUser(user.username)
+            window.location.reload()
+            break
           }
         }
-        this.handleOpenSnackBar('Incorrect username or/and password!')
       }
+      if (throwError) this.handleOpenSnackBar('Incorrect username or/and password!')
     }
-    else {
-      this.handleOpenSnackBar('Incorrect username or/and password!')
-      console.log('Bruh')
-    }
+    else this.handleOpenSnackBar('Incorrect username or/and password!')
   }
 }

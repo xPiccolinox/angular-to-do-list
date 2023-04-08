@@ -31,7 +31,7 @@
           name="password"
           required
           [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
@@ -42,10 +42,11 @@
       <button
         mat-button
         color="primary"
-        type="submit"
+        type="button"
         name="createNewProfile"
         autocomplete="off"
-        spellcheck="false">
+        spellcheck="false"
+        (click)="handleSubmit(userLoginForm, 'createNewProfile')">
         Create new profile</button>
       <!-- Sign in -->
       <button

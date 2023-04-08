@@ -6,16 +6,31 @@ import { User } from "./models/user.interface";
 @Injectable()
 export class TaskDashboardService {
   constructor() {}
+
+  loggedUser = this.getLoggedUser()
+
+  // Tasks
   getTasks() {
-    return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks') || '{}') : []
+    return localStorage.getItem(this.loggedUser + 'tasks') ? JSON.parse(localStorage.getItem(this.loggedUser + 'tasks') || '[]') : []
   }
   updateTasks(taskObject: Task[]) {
-    localStorage.setItem('tasks', JSON.stringify(taskObject))
+    localStorage.setItem(this.loggedUser + 'tasks', JSON.stringify(taskObject))
   }
+  // Users
   getUsers() {
-    return localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') || '{}') : []
+    return localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') || '[]') : []
   }
   updateUsers(userObject: User[]) {
     localStorage.setItem('users', JSON.stringify(userObject))
+  }
+  // User log in / out
+  getLoggedUser() {
+    return localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser') || '') : ''
+  }
+  logInUser(username: string) {
+    localStorage.setItem('loggedUser', JSON.stringify(username))
+  }
+  logOutUser() {
+    localStorage.setItem('loggedUser', '')
   }
 }
