@@ -17,11 +17,21 @@
     img {
       width: 180px;
     }
-    button {
+    .logOutSection {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       width: 50%;
-      height: 48px;
-      justify-self: flex-end;
+      height: calc(64px + 1em);
       margin-top: auto;
+      button {
+        width: 100%;
+        height: calc(100% - 1em - 16px);
+      }
+      .loggedUsername {
+        color: #888;
+      }
     }
   }
   .taskList {

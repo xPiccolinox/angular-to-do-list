@@ -20,7 +20,6 @@ export class TaskTileComponent {
 
   changeDone(event: Task) {
     this.done.emit(this.task)
-    console.log('bruh')
   }
   onRemove(event: Task) {
     this.remove.emit(this.task)
