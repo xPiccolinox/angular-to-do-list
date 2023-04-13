@@ -21,6 +21,10 @@ export class TaskDashboardComponent implements OnInit {
     this.taskService.logOutUser()
     window.location.reload()
   }
+  handleEditTitle(event: any) {
+    event.task.title = event.newTitle
+    this.taskService.updateTasks(this.tasks)
+  }
   handleChangeDone(event: any) {
     event.done = !event.done
     this.taskService.updateTasks(this.tasks)

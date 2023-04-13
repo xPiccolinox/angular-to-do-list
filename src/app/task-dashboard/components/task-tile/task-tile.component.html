@@ -2,16 +2,53 @@
   <mat-checkbox
     color="primary" 
     [checked]="task.done" 
-    (change)="changeDone(task)"
+    (change)="handleChangeDoneStatus()"
     class="taskDoneCheckbox"
   ></mat-checkbox>
-  <div class="taskTitle">
+  <!-- Title -->
+  <div *ngIf="!this.editing" class="taskTitle">
     {{ task.title }}
   </div>
-  <button
-    mat-icon-button
-    class="taskRemoveButton"
-    (click)="onRemove(task)">
-    <mat-icon>delete_outline</mat-icon>
-  </button>
+  <!-- Edit Title Input -->
+  <input
+    *ngIf="this.editing"
+    [(ngModel)]="editDoneValue"
+    type="text"
+    class="taskTitleEditInput"
+    [value]="this.task.title"
+    placeholder="editing" />
+  <div class="taskButtons">
+    <!-- Edit Button -->
+    <button
+      *ngIf="!this.editing"
+      mat-icon-button
+      class="taskEditButton"
+      (click)="handleToggleEditing()">
+      <mat-icon class="material-icons-outlined">create</mat-icon>
+    </button>
+    <!-- Remove Button -->
+    <button
+      *ngIf="!this.editing"
+      mat-icon-button
+      class="taskRemoveButton"
+      (click)="handleRemove()">
+      <mat-icon class="material-icons-outlined">delete</mat-icon>
+    </button>
+    <!-- Accept Edit -->
+    <button
+      *ngIf="this.editing"
+      mat-icon-button
+      class="taskEditAcceptButton"
+      (click)="handleEditDone(editDoneValue)">
+      <mat-icon class="material-icons-outlined">done</mat-icon>
+    </button>
+    <!-- Cancel Edit -->
+    <button
+      *ngIf="this.editing"
+      mat-icon-button
+      class="taskEditDenyButton"
+      (click)="handleToggleEditing()">
+      <mat-icon class="material-icons-outlined">close</mat-icon>
+    </button>
+  </div>
 </div>

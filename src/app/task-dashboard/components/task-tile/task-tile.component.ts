@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-
 import { Task } from "../../models/task.interface";
 
 @Component({
@@ -14,14 +13,27 @@ export class TaskTileComponent {
   @Input()
   i!: number
   @Output()
+  edit: EventEmitter<any> = new EventEmitter()
+  @Output()
   remove: EventEmitter<any> = new EventEmitter()
   @Output()
   done: EventEmitter<any> = new EventEmitter()
 
-  changeDone(event: Task) {
+  editing:boolean = false
+  editDoneValue: string = ''
+
+  handleToggleEditing() {
+    this.editDoneValue = this.task.title
+    this.editing = !this.editing
+  }
+  handleEditDone(value: string) {
+    this.editing = false
+    this.edit.emit({task: this.task, newTitle: value})
+  }
+  handleChangeDoneStatus() {
     this.done.emit(this.task)
   }
-  onRemove(event: Task) {
+  handleRemove() {
     this.remove.emit(this.task)
   }
 }
