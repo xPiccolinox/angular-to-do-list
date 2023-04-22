@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
 import { Task } from "./models/task.interface";
+import { TaskList } from "./models/taskList.interface";
 import { User } from "./models/user.interface";
 
 @Injectable()
@@ -10,11 +11,11 @@ export class TaskDashboardService {
   loggedUser = this.getLoggedUser()
 
   // Tasks
-  getTasks() {
-    return localStorage.getItem(this.loggedUser + 'tasks') ? JSON.parse(localStorage.getItem(this.loggedUser + 'tasks') || '[]') : []
+  getTaskLists() {
+    return localStorage.getItem(this.loggedUser + '_tasks') ? JSON.parse(localStorage.getItem(this.loggedUser + '_tasks') || '[{id: 0, listName: "Your new task list", tasks: []}]') : [{id: 0, listName: "Your new task list", tasks: []}]
   }
-  updateTasks(taskObject: Task[]) {
-    localStorage.setItem(this.loggedUser + 'tasks', JSON.stringify(taskObject))
+  updateTaskLists(taskLists: TaskList[]) {
+    localStorage.setItem(this.loggedUser + '_tasks', JSON.stringify(taskLists))
   }
   // Users
   getUsers() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskDashboardService } from "../../task-dashboard.service";
 import { Task } from "../../models/task.interface";
+import { TaskList } from "../../models/taskList.interface";
 
 @Component({
   selector: 'task-dashboard',
@@ -11,33 +12,54 @@ import { Task } from "../../models/task.interface";
 export class TaskDashboardComponent implements OnInit {
   constructor(private taskService: TaskDashboardService) {}
   
-  tasks: Task[] = []
+  taskLists: TaskList[] = [{id: 0, listName: "Your new task list", tasks: []}]
+  currentTaskListIndex: number = 0
   username: string = this.taskService.getLoggedUser()
 
+  // Get TaskLists
   ngOnInit() {
-    this.tasks = this.taskService.getTasks()
+    this.taskLists = this.taskService.getTaskLists()
   }
+  // Logout
   handleLogOut() {
     this.taskService.logOutUser()
     window.location.reload()
   }
-  handleEditTitle(event: any) {
-    event.task.title = event.newTitle
-    this.taskService.updateTasks(this.tasks)
+  // TaskLists
+  handleTaskListAdd() {
+    this.taskLists.push({id: this.taskLists[this.taskLists.length - 1].id + 1, listName: "New Task List", tasks: []})
+    this.taskService.updateTaskLists(this.taskLists)
   }
-  handleChangeDone(event: any) {
-    event.done = !event.done
-    this.taskService.updateTasks(this.tasks)
+  handleCurrentTaskListIndexChange(index: number) {
+    this.currentTaskListIndex = index
   }
-  handleRemove(event: any) {
-    this.tasks = this.tasks.filter((task: Task) => {
+  // Tasks
+  handleTaskAdd(event: any) {
+    let tasks = this.taskLists[this.currentTaskListIndex].tasks
+
+    if (tasks.length > 0) tasks.push({id: tasks[tasks.length - 1].id + 1, title: event.taskDesc, done: false})
+    else tasks.push({id: 0, title: event.taskDesc, done: false})
+    this.taskLists[this.currentTaskListIndex].tasks = tasks
+    this.taskService.updateTaskLists(this.taskLists)
+  }
+  handleTaskRemove(event: any) {
+    let tasks = this.taskLists[this.currentTaskListIndex].tasks
+    
+    tasks = tasks.filter((task: Task) => {
       return event.id !== task.id
     })
-    this.taskService.updateTasks(this.tasks)
+    this.taskLists[this.currentTaskListIndex].tasks = tasks
+    this.taskService.updateTaskLists(this.taskLists)
   }
-  handleAddNew(event: any) {
-    if (this.tasks.length > 0) this.tasks.push({id: this.tasks[this.tasks.length - 1].id + 1, title: event.taskDesc, done: false})
-    else this.tasks.push({id: 1, title: event.taskDesc, done: false})
-    this.taskService.updateTasks(this.tasks)
+  handleTaskChangeDone(event: any) {
+    event.done = !event.done
+    this.taskService.updateTaskLists(this.taskLists)
+  }
+  handleTaskEditTitle(event: any) {
+    event.task.title = event.newTitle
+    this.taskService.updateTaskLists(this.taskLists)
   }
 }
+
+
+

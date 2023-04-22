@@ -1,6 +1,17 @@
 <div class="taskContainer">
     <div class="sidebar mat-elevation-z8">
         <img src="./assets/images/logo.png"/>
+        <div class="taskListsContainer">
+            <div class="taskLists">
+                <button mat-raised-button class="taskListButton" *ngFor="let taskList of taskLists; let index = index;" (click)="handleCurrentTaskListIndexChange(index)">
+                    {{ taskList.listName }}
+                </button>
+                <button mat-raised-button class="taskListAddButton" (click)="handleTaskListAdd()">
+                    Add new category
+                </button>
+            </div>
+            <div class="taskListsContainerShadow"></div>
+        </div>
         <div class="logOutSection">
             <button mat-raised-button color="primary" (click)="handleLogOut()">Log out</button>
             <div class="loggedUsername">Logged as: {{username}}</div>
@@ -9,13 +20,13 @@
     <div class="taskList">
         <task-tile
             class="taskTile"
-            *ngFor="let task of tasks; let i = index;"
+            *ngFor="let task of taskLists[this.currentTaskListIndex].tasks; let i = index;"
             [task]="task"
             [i]="i"
-            (edit)="handleEditTitle($event)"
-            (done)="handleChangeDone($event)"
-            (remove)="handleRemove($event)">
+            (edit)="handleTaskEditTitle($event)"
+            (done)="handleTaskChangeDone($event)"
+            (remove)="handleTaskRemove($event)">
         </task-tile>
-        <task-form class="taskForm" (addNew)="handleAddNew($event)"></task-form>
+        <task-form class="taskForm" (addNew)="handleTaskAdd($event)"></task-form>
     </div>
 </div>
