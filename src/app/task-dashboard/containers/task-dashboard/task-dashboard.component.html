@@ -3,9 +3,16 @@
         <img src="./assets/images/logo.png"/>
         <div class="taskListsContainer">
             <div class="taskLists">
-                <button mat-raised-button class="taskListButton" *ngFor="let taskList of taskLists; let index = index;" (click)="handleCurrentTaskListIndexChange(index)">
-                    {{ taskList.listName }}
-                </button>
+                <task-taskList
+                    class="task-taskList"
+                    *ngFor="let taskList of taskLists; let i = index"
+                    [taskList]="this.taskLists[i]"
+                    [index]="i"
+                    [currentTaskListIndex]="this.currentTaskListIndex"
+                    (changeCurrentTaskListIndex)="handleCurrentTaskListIndexChange($event)"
+                    (edit)="handleTaskListEditName($event)"
+                    (remove)="handleTaskListRemove($event)">
+                </task-taskList>
                 <button mat-raised-button class="taskListAddButton" (click)="handleTaskListAdd()">
                     Add new category
                 </button>
@@ -20,9 +27,8 @@
     <div class="taskList">
         <task-tile
             class="taskTile"
-            *ngFor="let task of taskLists[this.currentTaskListIndex].tasks; let i = index;"
+            *ngFor="let task of taskLists[this.currentTaskListIndex].tasks;"
             [task]="task"
-            [i]="i"
             (edit)="handleTaskEditTitle($event)"
             (done)="handleTaskChangeDone($event)"
             (remove)="handleTaskRemove($event)">

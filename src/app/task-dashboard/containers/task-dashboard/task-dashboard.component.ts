@@ -30,8 +30,21 @@ export class TaskDashboardComponent implements OnInit {
     this.taskLists.push({id: this.taskLists[this.taskLists.length - 1].id + 1, listName: "New Task List", tasks: []})
     this.taskService.updateTaskLists(this.taskLists)
   }
-  handleCurrentTaskListIndexChange(index: number) {
-    this.currentTaskListIndex = index
+  handleCurrentTaskListIndexChange(event: any) {
+    this.currentTaskListIndex = event
+  }
+  handleTaskListRemove(event: any) {
+    if (this.taskLists.length > 1) {
+      if (event.index == this.currentTaskListIndex) this.currentTaskListIndex = 0
+      this.taskLists = this.taskLists.filter((taskList: TaskList) => {
+        return event.taskList.id !== taskList.id
+      })
+      this.taskService.updateTaskLists(this.taskLists)
+    }
+  }
+  handleTaskListEditName(event: any) {
+    event.taskList.listName = event.newTaskListName
+    this.taskService.updateTaskLists(this.taskLists)
   }
   // Tasks
   handleTaskAdd(event: any) {
@@ -60,6 +73,3 @@ export class TaskDashboardComponent implements OnInit {
     this.taskService.updateTaskLists(this.taskLists)
   }
 }
-
-
-

@@ -12,13 +12,15 @@ import { TaskDashboardService } from './task-dashboard.service';
 import { UserLoginComponent } from './containers/user-login/user-login.component';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskTaskListComponent } from './components/task-task-list/task-taskList.component';
 
 @NgModule({
   declarations: [
     TaskDashboardComponent,
+    TaskTaskListComponent,
     TaskFormComponent,
     TaskTileComponent,
-    UserLoginComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

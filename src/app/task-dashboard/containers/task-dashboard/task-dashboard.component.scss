@@ -45,16 +45,19 @@
         box-sizing: border-box;
         overflow-y: overlay;
         overflow-x: hidden;
-        button {
+        task-taskList {
+          position: relative;
+          display: flex;
+          flex-direction: column;
           flex-shrink: 0;
+          gap: 16px;
           width: 100%;
           height: 36px;
         }
-        .taskListButton {
-          background-color: rgb(157, 203, 255);
-          border-radius: 21px;
-        }
         .taskListAddButton {
+          flex-shrink: 0;
+          width: 100%;
+          height: 36px;
           margin-top: 24px;
           border-radius: 10px;
         }

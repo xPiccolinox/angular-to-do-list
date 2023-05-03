@@ -1,0 +1,82 @@
+$colors: #FA9189, #FCAE7C, #FFE699, #F9FFB5, #B3F5BC, #D6F6FF, #E2CBF7, #D1BDFF;
+
+.taskListDivButton {
+  background-color: #fff;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  left: 20%;
+  width: 80%;
+  height: 100%;
+  padding: 0;
+  border-radius: 10px;
+  transition: 0.25s ease, background-color 0.1s ease;
+  &:hover {
+    background-color: #ddd;
+    .taskListFunctionButtons {
+      filter: opacity(1)
+    }
+  }
+  &.currentTaskList {
+    left: 0;
+  }
+  .taskListTitle {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    width: 30%;
+    height: 100%;
+    padding-left: 8px;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    &.preventPointer {
+      cursor: default;
+    }
+    .taskListTitleString {
+      padding: 0 6px;
+      pointer-events: none;
+    }
+    .taskListEditInput {
+      background-color: #eee;
+      width: 100%;
+      height: 2em;
+      margin: 0.6em 0.6em 0.6em 0;
+      padding: 0 0.6em;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+  }
+  .taskListFunctionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    transition: 0.1s ease;
+    filter: opacity(0);
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+      mat-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        height: inherit;
+        width: inherit;
+        font-size: 80%;
+      }
+      ::ng-deep .mat-mdc-button-touch-target {
+        height: 100%;
+        width: 100%;
+        font-size: 100%;
+      }
+    }
+  }
+}
