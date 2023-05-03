@@ -10,8 +10,6 @@ import { Task } from "../../models/task.interface";
 export class TaskTileComponent {
   @Input()
   task!: Task
-  @Input()
-  i!: number
   @Output()
   edit: EventEmitter<any> = new EventEmitter()
   @Output()

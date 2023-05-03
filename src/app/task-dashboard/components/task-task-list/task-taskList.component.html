@@ -1,0 +1,57 @@
+<div
+    class="taskListDivButton mat-elevation-z2"
+    [class.currentTaskList]="this.index == this.currentTaskListIndex">
+    <!-- TaskList Name -->
+    <div
+    class="taskListTitle"
+    [class.preventPointer]="this.editing"
+    (click)="handleCurrentTaskListIndexChange(index)">
+        <!-- Title -->
+        <div class="taskListTitleString" *ngIf="!this.editing">
+            {{ this.taskList.listName }}
+        </div>
+        <!-- Change Title Input -->
+        <input
+        class="taskListEditInput"
+        *ngIf="this.editing"
+        [(ngModel)]="editDoneValue"
+        type="text"
+        [value]="this.taskList.listName"
+        placeholder="editing" />
+    </div>
+    <!-- TaskList Function Buttons -->
+    <div class="taskListFunctionButtons">
+        <!-- Edit Button -->
+        <button
+        *ngIf="!this.editing"
+        mat-icon-button
+        class="taskListEditButton"
+        (click)="handleToggleEditing()">
+        <mat-icon class="material-icons-outlined">create</mat-icon>
+        </button>
+        <!-- Remove Button -->
+        <button
+            *ngIf="!this.editing"
+            mat-icon-button
+            class="taskListRemoveButton"
+            (click)="handleRemove()">
+            <mat-icon class="material-icons-outlined">delete</mat-icon>
+        </button>
+        <!-- Accept Edit -->
+        <button
+            *ngIf="this.editing"
+            mat-icon-button
+            class="taskListEditAcceptButton"
+            (click)="handleEditDone(editDoneValue)">
+            <mat-icon class="material-icons-outlined">done</mat-icon>
+        </button>
+        <!-- Cancel Edit -->
+        <button
+            *ngIf="this.editing"
+            mat-icon-button
+            class="taskListEditDenyButton"
+            (click)="handleToggleEditing()">
+            <mat-icon class="material-icons-outlined">close</mat-icon>
+        </button>
+    </div>
+</div>
