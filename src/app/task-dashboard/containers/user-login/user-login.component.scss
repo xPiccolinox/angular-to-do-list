@@ -1,12 +1,11 @@
 .userLoginComponent {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: 400px;
   height: 540px;
   img {
     width: 38%;
-    margin-top: 16%;
   }
   mat-card-header {
     display: flex;
@@ -28,6 +27,28 @@
       display: flex;
       justify-content: center;
       gap: 12%;
+    }
+  }
+  .googleLoginButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 70%;
+    height: 42px;
+    margin-top: 16px;
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      img {
+        width: 36px;
+        height: auto;
+      }
+      .buttonText {
+        font-size: 14px;
+      }
     }
   }
 }

@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { TaskDashboardModule } from './task-dashboard/task-dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     TaskDashboardModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

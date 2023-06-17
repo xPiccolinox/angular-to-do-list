@@ -9,17 +9,16 @@
   <!-- Form -->
   <form
   #userLoginForm="ngForm"
-  (ngSubmit)="handleSubmit(userLoginForm, $event.submitter.name)"
   novalidate>
     <!-- Inputs -->
     <mat-card-content align="center">
-      <!-- Username -->
+      <!-- Email -->
       <mat-form-field hideRequiredMarker="true">
-        <mat-label>Username</mat-label>
+        <mat-label>E-mail</mat-label>
         <input
           matInput
-          ngModel
-          name="username"
+          [(ngModel)]="email"
+          name="email"
           required>
       </mat-form-field>
       <!-- Password -->
@@ -27,7 +26,7 @@
         <mat-label>Password</mat-label>
         <input
           matInput
-          ngModel
+          [(ngModel)]="password"
           name="password"
           required
           [type]="hide ? 'password' : 'text'">
@@ -46,17 +45,27 @@
         name="createNewProfile"
         autocomplete="off"
         spellcheck="false"
-        (click)="handleSubmit(userLoginForm, 'createNewProfile')">
+        (click)="handleSubmit('createNewProfile', userLoginForm)">
         Create new profile</button>
       <!-- Sign in -->
       <button
         mat-raised-button
         color="primary"
-        type="submit"
+        type="button"
         name="signIn"
         autocomplete="off"
-        spellcheck="false">
+        spellcheck="false"
+        (click)="handleSubmit('signIn', userLoginForm)">
         Sign in</button>
     </mat-card-actions>
   </form>
+  <button
+    mat-raised-button
+    class="googleLoginButton"
+    (click)="handleSignInWithGoogle()">
+    <div class="content">
+      <img src="../../../../assets/images/googleLogo.png" alt="googleLogo.png" />
+      <div class="buttonText">Continue with Google</div>
+    </div>
+    </button>
 </mat-card>

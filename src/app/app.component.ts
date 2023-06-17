@@ -11,8 +11,9 @@ interface Task {
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <task-dashboard *ngIf="loggedIn"></task-dashboard>
-    <user-login *ngIf="!loggedIn"></user-login>
+    <!-- <task-dashboard *ngIf="loggedIn"></task-dashboard>
+    <user-login *ngIf="!loggedIn"></user-login> -->
+    <router-outlet></router-outlet>
   `
 })
 export class AppComponent {

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { TaskDashboardService } from "../../task-dashboard.service";
 import { Task } from "../../models/task.interface";
 import { TaskList } from "../../models/taskList.interface";
+import { AuthService } from "src/app/shared/auth.service";
 
 @Component({
   selector: 'task-dashboard',
@@ -10,7 +11,9 @@ import { TaskList } from "../../models/taskList.interface";
 })
 
 export class TaskDashboardComponent implements OnInit {
-  constructor(private taskService: TaskDashboardService) {}
+  constructor(
+    private taskService: TaskDashboardService,
+    private auth: AuthService) {}
   
   taskLists: TaskList[] = [{id: 0, listName: "Your new task list", tasks: []}]
   currentTaskListIndex: number = 0
@@ -22,8 +25,9 @@ export class TaskDashboardComponent implements OnInit {
   }
   // Logout
   handleLogOut() {
-    this.taskService.logOutUser()
-    window.location.reload()
+    this.auth.logout()
+    // this.taskService.logOutUser()
+    // window.location.reload()
   }
   // TaskLists
   handleTaskListAdd() {
