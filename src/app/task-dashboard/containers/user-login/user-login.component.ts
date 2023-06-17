@@ -31,13 +31,13 @@ export class UserLoginComponent implements OnInit {
     this.snackBar.open(message, 'DISMISS')
   }
   handleCreateNewProfile() {
-    this.auth.register(this.email, this.password)
+    // this.auth.register(this.email, this.password)
   }
   handleSignIn() {
-    this.auth.signIn(this.email, this.password)
+    // this.auth.signIn(this.email, this.password)
   }
   handleSignInWithGoogle() {
-    this.auth.signInWithGoogle()
+    // this.auth.signInWithGoogle()
   }
   handleSubmit(action: string, form: NgForm) {
     if (this.email == '') {

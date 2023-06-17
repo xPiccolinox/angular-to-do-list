@@ -25,9 +25,7 @@ export class TaskDashboardComponent implements OnInit {
   }
   // Logout
   handleLogOut() {
-    this.auth.logout()
-    // this.taskService.logOutUser()
-    // window.location.reload()
+    // this.auth.logout()
   }
   // TaskLists
   handleTaskListAdd() {
