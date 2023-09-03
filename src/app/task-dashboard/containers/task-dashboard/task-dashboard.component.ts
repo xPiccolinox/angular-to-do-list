@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { TaskDashboardService } from "../../task-dashboard.service";
 import { Task } from "../../models/task.interface";
 import { TaskList } from "../../models/taskList.interface";
-import { AuthService } from "src/app/shared/auth.service";
-
+import { FirebaseService } from "src/app/shared/firebase.service";
 @Component({
   selector: 'task-dashboard',
   templateUrl: 'task-dashboard.component.html',
@@ -13,65 +12,61 @@ import { AuthService } from "src/app/shared/auth.service";
 export class TaskDashboardComponent implements OnInit {
   constructor(
     private taskService: TaskDashboardService,
-    private auth: AuthService) {}
+    private firebase: FirebaseService
+    ) {}
   
-  taskLists: TaskList[] = [{id: 0, listName: "Your new task list", tasks: []}]
   currentTaskListIndex: number = 0
-  username: string = this.taskService.getLoggedUser()
+  username: string = 'TO DO Some username'
+  taskLists: TaskList[] = this.firebase.taskLists
 
-  // Get TaskLists
-  ngOnInit() {
-    this.taskLists = this.taskService.getTaskLists()
+  // Init
+  async ngOnInit() {
+    await this.firebase.getTaskLists()
+    this.taskLists = this.firebase.taskLists
   }
   // Logout
   handleLogOut() {
-    // this.auth.logout()
+    this.firebase.logout()
   }
+
   // TaskLists
-  handleTaskListAdd() {
-    this.taskLists.push({id: this.taskLists[this.taskLists.length - 1].id + 1, listName: "New Task List", tasks: []})
-    this.taskService.updateTaskLists(this.taskLists)
+  async handleTaskListAdd() {
+    await this.firebase.createNewTaskList()
+    this.taskLists = this.firebase.taskLists
   }
   handleCurrentTaskListIndexChange(event: any) {
     this.currentTaskListIndex = event
   }
-  handleTaskListRemove(event: any) {
-    if (this.taskLists.length > 1) {
-      if (event.index == this.currentTaskListIndex) this.currentTaskListIndex = 0
-      this.taskLists = this.taskLists.filter((taskList: TaskList) => {
-        return event.taskList.id !== taskList.id
-      })
-      this.taskService.updateTaskLists(this.taskLists)
-    }
+  async handleTaskListRemove(event: any) {
+    await this.firebase.deleteTaskList(event.taskList.id)
+    this.taskLists = this.firebase.taskLists
   }
-  handleTaskListEditName(event: any) {
-    event.taskList.listName = event.newTaskListName
-    this.taskService.updateTaskLists(this.taskLists)
+  async handleTaskListEditName(event: any) {
+    await this.firebase.editTaskList(event.taskList.id, event.newTaskListName)
+    this.taskLists = this.firebase.taskLists
   }
-  // Tasks
-  handleTaskAdd(event: any) {
-    let tasks = this.taskLists[this.currentTaskListIndex].tasks
 
-    if (tasks.length > 0) tasks.push({id: tasks[tasks.length - 1].id + 1, title: event.taskDesc, done: false})
-    else tasks.push({id: 0, title: event.taskDesc, done: false})
-    this.taskLists[this.currentTaskListIndex].tasks = tasks
-    this.taskService.updateTaskLists(this.taskLists)
+  // Tasks
+  async handleTaskAdd(event: any) {
+    const taskListId = this.taskLists[this.currentTaskListIndex].id
+    await this.firebase.createNewTask(taskListId, event.taskDesc)
+    this.taskLists = this.firebase.taskLists
   }
-  handleTaskRemove(event: any) {
-    let tasks = this.taskLists[this.currentTaskListIndex].tasks
-    
-    tasks = tasks.filter((task: Task) => {
-      return event.id !== task.id
-    })
-    this.taskLists[this.currentTaskListIndex].tasks = tasks
-    this.taskService.updateTaskLists(this.taskLists)
+  async handleTaskRemove(event: any) {
+    const taskListId = this.taskLists[this.currentTaskListIndex].id
+    await this.firebase.deleteTask(taskListId, event.id)
+    this.taskLists = this.firebase.taskLists
   }
-  handleTaskChangeDone(event: any) {
-    event.done = !event.done
-    this.taskService.updateTaskLists(this.taskLists)
+  async handleTaskChangeDone(event: any) {
+    const taskListId = this.taskLists[this.currentTaskListIndex].id
+    await this.firebase.changeTaskDone(taskListId, event.id, !event.done)
+    this.taskLists = this.firebase.taskLists
   }
-  handleTaskEditTitle(event: any) {
-    event.task.title = event.newTitle
-    this.taskService.updateTaskLists(this.taskLists)
+  async handleTaskEditTitle(event: any) {
+    const taskListId = this.taskLists[this.currentTaskListIndex].id
+    await this.firebase.editTaskTitle(taskListId, event.task.id, event.newTitle)
+    this.taskLists = this.firebase.taskLists
+    // event.task.title = event.newTitle
+    // this.taskService.updateTaskLists(this.taskLists)
   }
 }

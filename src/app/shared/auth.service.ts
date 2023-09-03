@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-// import { AngularFireAuth } from '@angular/fire/compat/auth'
-// import { GoogleAuthProvider } from 'firebase/auth'
-// import { getAuth } from 'firebase/auth'
+// import { Injectable } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { MatSnackBar } from '@angular/material/snack-bar';
+// // import { AngularFireAuth } from '@angular/fire/compat/auth'
+// // import { GoogleAuthProvider } from 'firebase/auth'
+// // import { getAuth } from 'firebase/auth'
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class AuthService {
 
-  constructor(
-    // private fireauth: AngularFireAuth,
-    private router: Router,
-    private snackbar: MatSnackBar) {
-    }
+//   constructor(
+//     // private fireauth: AngularFireAuth,
+//     private router: Router,
+//     private snackbar: MatSnackBar) {
+//     }
     
   //   auth = getAuth()
   // // Open Snackbar error message
@@ -87,4 +87,4 @@ export class AuthService {
 //         this.snackbarError(error.code)
 //       })
 //   }
-}
+// }
